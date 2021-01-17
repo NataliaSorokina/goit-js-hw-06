@@ -52,7 +52,8 @@ console.log(getUserWithEmail(users, 'elmahead@omatom.com')); // {объект п
 //Получить массив пользователей попадающих в возрастную категорию от min до max лет (поле age).
 
 const getUsersWithAge = (users, min, max) => {
-  // твой код
+  const userWithAge = users.filter(user => user.age > min);
+  return userWithAge.filter(user => user.age < max);
 };
 
 console.log(getUsersWithAge(users, 20, 30)); // [объект Ross Vazquez, объект Elma Head, объект Carey Barr]
