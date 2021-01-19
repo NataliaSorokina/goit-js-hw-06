@@ -67,11 +67,11 @@ console.log(calculateTotalBalance(users)); // 20916
 
 
 //Задание 8
-//Массив имен всех пользователей у которых есть друг с указанным именем.
+//Массив имен всех пользователей, у которых есть друг с указанным именем.
 
-const getUsersWithFriend = (users, friendName) => {
-  // твой код
-};
+const getUsersWithFriend = (users, friendName) => users
+  .filter(user => user.friends.some(friend => friend === friendName))
+  .map(user => user.name);
 
 console.log(getUsersWithFriend(users, 'Briana Decker')); // [ 'Sharlene Bush', 'Sheree Anthony' ]
 console.log(getUsersWithFriend(users, 'Goldie Gentry')); // [ 'Elma Head', 'Sheree Anthony' ]
@@ -81,9 +81,9 @@ console.log(getUsersWithFriend(users, 'Goldie Gentry')); // [ 'Elma Head', 'Sher
 //Задание 9
 //Массив имен (поле name) людей, отсортированных в зависимости от количества их друзей (поле friends)
 
-const getNamesSortedByFriendsCount = users => {
-  // твой код
-};
+const getNamesSortedByFriendsCount = users => users
+  .sort((a, b) => a.friends.length - b.friends.length)
+  .map(user => user.name);
 
 console.log(getNamesSortedByFriendsCount(users));
 // [ 'Moore Hensley', 'Sharlene Bush', 'Elma Head', 'Carey Barr', 'Blackburn Dotson', 'Sheree Anthony', 'Ross Vazquez' ]
@@ -94,9 +94,12 @@ console.log(getNamesSortedByFriendsCount(users));
 //Получить массив всех умений всех пользователей (поле skills), при этом не должно быть повторяющихся умений 
 //и они должны быть отсортированы в алфавитном порядке.
 
-const getSortedUniqueSkills = users => {
-  // твой код
-};
+const getSortedUniqueSkills = users => users
+  .flatMap(user => user.skills)
+  .filter((user, index, arr) => {
+    return arr.indexOf(user) === index;
+  })
+  .sort();
 
 console.log(getSortedUniqueSkills(users));
 // [ 'adipisicing', 'amet', 'anim', 'commodo', 'culpa', 'elit', 'ex', 'ipsum', 'irure', 'laborum', 'lorem', 
