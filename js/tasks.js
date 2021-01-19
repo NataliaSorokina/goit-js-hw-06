@@ -22,10 +22,9 @@ console.log(getUsersWithEyeColor(users, 'blue')); // [объект Moore Hensley
 //Задание 3
 //Получить массив имен пользователей по полу (поле gender).
 
-const getUsersWithGender = (users, gender) => {
-    const usersWithGender = users.filter(user => user.gender === gender);
-    return usersWithGender.map(user => user.name);
-}
+const getUsersWithGender = (users, gender) => users
+  .filter(user => user.gender === gender)
+  .map(user => user.name);
 console.log(getUsersWithGender(users, 'male')); // [ 'Moore Hensley', 'Ross Vazquez', 'Carey Barr', 'Blackburn Dotson' ]
 
 
@@ -49,17 +48,13 @@ console.log(getUserWithEmail(users, 'elmahead@omatom.com')); // {объект п
 
 
 //Задание 6
-//Получить массив пользователей попадающих в возрастную категорию от min до max лет (поле age).
+//Получить массив пользователей, попадающих в возрастную категорию от min до max лет (поле age).
 
-const getUsersWithAge = (users, min, max) => {
-  const userWithAge = users.filter(user => user.age > min);
-  return userWithAge.filter(user => user.age < max);
-};
-
+const getUsersWithAge = (users, min, max) => users.filter(user => user.age >= min && user.age <= max);
+  
 console.log(getUsersWithAge(users, 20, 30)); // [объект Ross Vazquez, объект Elma Head, объект Carey Barr]
 
-console.log(getUsersWithAge(users, 30, 40));
-// [объект Moore Hensley, объект Sharlene Bush, объект Blackburn Dotson, объект Sheree Anthony]
+console.log(getUsersWithAge(users, 30, 40)); // [объект Moore Hensley, объект Sharlene Bush, объект Blackburn Dotson, объект Sheree Anthony]
 
 
 
