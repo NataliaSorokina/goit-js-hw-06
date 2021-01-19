@@ -66,10 +66,7 @@ console.log(getUsersWithAge(users, 30, 40));
 //Задание 7
 //Получить общую сумму баланса (поле balance) всех пользователей.
 
-const calculateTotalBalance = users => {
-  // твой код
-};
-
+const calculateTotalBalance = users => users.reduce((totalBalance, user) => totalBalance + user.balance, 0);
 console.log(calculateTotalBalance(users)); // 20916
 
 
